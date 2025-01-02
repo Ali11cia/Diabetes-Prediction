@@ -100,7 +100,7 @@ st.markdown(
 )
 
 # Dataset Preview
-csv_path = "/content/Diabetes_BRFSS2021_CTGANbalanced.csv"
+csv_path = "Diabetes_BRFSS2021_CTGANbalanced.csv"
 df = pd.read_csv(csv_path)
 st.markdown("<div class='data-card'>", unsafe_allow_html=True)
 st.write("### Preview of Dataset")

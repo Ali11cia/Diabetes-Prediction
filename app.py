@@ -32,6 +32,11 @@ st.markdown(
         border-radius: 15px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
+    /* Increase the font size of all labels */
+    .css-17eq0hr label {
+        font-size: 18px !important; /* Adjust the font size as needed */
+        color: #333333; /* Optional: Customize label color */
+    }
     /* Sidebar Styling */
     .stSidebar {
         background: linear-gradient(135deg, #FFD580, #FFAA5A); /* Darker orange gradient */
@@ -66,6 +71,7 @@ st.markdown(
     }
     .stSlider .st-br {
         color: #0056b3 !important;
+        font-size: 16px;
     }
     .title {
         font-family: 'Roboto', sans-serif;
@@ -218,7 +224,7 @@ plt.gcf().set_dpi(100)  # Ensure consistent resolution
 # Add text for explanation
 plt.text(
     -0.2, 0.95,  # Position: adjust x and y to place it appropriately
-    "Blue bars 🟦 = Decrease the prediction\nRed bars 🟥 = Increase the prediction",
+    "Blue bars = Decrease the prediction\nRed bars = Increase the prediction",
     fontsize=10,
     color='black',
     transform=plt.gcf().transFigure,  # Use axis-relative coordinates

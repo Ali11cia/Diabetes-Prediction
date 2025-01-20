@@ -32,11 +32,6 @@ st.markdown(
         border-radius: 15px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
-    /* Increase the font size of all labels in widgets */
-    div[data-testid="stForm"] label, label {
-        font-size: 20px !important; /* Adjust the font size */
-        color: #333333; /* Optional: Customize label color */
-    }
     /* Sidebar Styling */
     .stSidebar {
         background: linear-gradient(135deg, #FFD580, #FFAA5A); /* Darker orange gradient */

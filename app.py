@@ -33,19 +33,19 @@ st.markdown(
     }
     /* Sidebar Styling */
     .stSidebar {
-        background: linear-gradient(135deg, #FF8C00, #FF4500); /* Darker orange gradient */
-        color: white;/* Ensure contrast against darker background */
+        background: linear-gradient(135deg, #FFD580, #FFAA5A); /* Darker orange gradient */
+        color: black;/* Ensure contrast against darker background */
         border-radius: 15px;
         padding: 20px;
     }
     .stSidebar h2, .stSidebar h3 {
-        color: white !important;
+        color: black !important;
     }
     .stSidebar .stMarkdown {
-        color: white !important;
+        color: black !important;
     }
     .stSlider > div {
-        color: white !important; /* Better text contrast on sliders */
+        color: black !important; /* Better text contrast on sliders */
     }
     .stButton>button {
         background-color: #FFA726;
@@ -208,18 +208,20 @@ shap_values = explainer(user_input_df)
 
 plt.rcParams.update({'font.size': 8})  # Reduce font size
 fig, ax = plt.subplots(figsize=(5, 3))
-shap.waterfall_plot(shap_values[0], max_display=len(user_input_df.columns), show=False)  # SHAP values for the first instance
+shap.waterfall_plot(shap_values[0], max_display=10, show=False)  # SHAP values for the first instance
 plt.gcf().set_dpi(100)  # Ensure consistent resolution
 
 # Add text for explanation
 plt.text(
-    0.1, -1,  # Position: adjust x and y to place it appropriately
+    -0.2, 0.95,  # Position: adjust x and y to place it appropriately
     "Blue bars = Decrease the prediction\nRed bars = Increase the prediction",
     fontsize=10,
     color='black',
-    transform=plt.gca().transAxes,  # Use axis-relative coordinates
-    bbox=dict(facecolor='white', alpha=0.5)  # Add a background box
+    transform=plt.gcf().transFigure,  # Use axis-relative coordinates
+    bbox=dict(facecolor='white', alpha=0.8)  # Add a background box
 )
+# Adjust layout to prevent overlap
+plt.tight_layout()
 st.pyplot(fig)
 
 # Footer

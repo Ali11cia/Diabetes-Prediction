@@ -33,8 +33,8 @@ st.markdown(
     }
     /* Sidebar Styling */
     .stSidebar {
-        background: linear-gradient(135deg, #FFA726, #FFCC80);
-        color: white;
+        background: linear-gradient(135deg, #FF8C00, #FF4500); /* Darker orange gradient */
+        color: white;/* Ensure contrast against darker background */
         border-radius: 15px;
         padding: 20px;
     }
@@ -43,6 +43,9 @@ st.markdown(
     }
     .stSidebar .stMarkdown {
         color: white !important;
+    }
+    .stSlider > div {
+        color: white !important; /* Better text contrast on sliders */
     }
     .stButton>button {
         background-color: #FFA726;
@@ -95,7 +98,7 @@ st.sidebar.markdown("<h2>📝 Input Health Details</h2>", unsafe_allow_html=True
 
 st.markdown("<div class='title'>🔍 Diabetes Prediction App</div>", unsafe_allow_html=True)
 st.markdown(
-    "<div class='subtitle'>Welcome to the Diabetes Prediction App! Predict diabetes risk based on health indicators with AI assistance.</div>",
+    "<div class='subtitle'>Welcome to the Diabetes Prediction App 😊! Predict diabetes risk based on health indicators with AI assistance.</div>",
     unsafe_allow_html=True
 )
 
@@ -107,11 +110,8 @@ st.write("### Preview of Dataset")
 st.dataframe(df.head(), use_container_width=True)
 st.markdown("</div>", unsafe_allow_html=True)
 
-st.write("## Predictions from the XGB Model")
-st.write("This app employs a XGB Model trained on a CTGAN-balanced diabetes dataset to predict diabetes.")
-
-# Sidebar for User Input
-st.sidebar.markdown("<div class='subtitle'>📝 Input Health Details</div>", unsafe_allow_html=True)
+st.write("## Predictions from the XGBoost Model")
+st.write("This app employs a XGBoost model trained on a CTGAN-balanced diabetes dataset to predict diabetes.")
 
 # Initialize user_input as a dictionary
 user_input = {}
@@ -206,9 +206,20 @@ shap_values = explainer(user_input_df)
 
 # Use SHAP's built-in waterfall plot for the first prediction
 
-plt.rcParams.update({'font.size': 10})  # Reduce font size
-fig, ax = plt.subplots(figsize=(6, 4))
+plt.rcParams.update({'font.size': 8})  # Reduce font size
+fig, ax = plt.subplots(figsize=(5, 3))
 shap.waterfall_plot(shap_values[0], max_display=len(user_input_df.columns), show=False)  # SHAP values for the first instance
+plt.gcf().set_dpi(100)  # Ensure consistent resolution
+
+# Add text for explanation
+plt.text(
+    0.1, -1,  # Position: adjust x and y to place it appropriately
+    "Blue bars = Decrease the prediction\nRed bars = Increase the prediction",
+    fontsize=10,
+    color='black',
+    transform=plt.gca().transAxes,  # Use axis-relative coordinates
+    bbox=dict(facecolor='white', alpha=0.5)  # Add a background box
+)
 st.pyplot(fig)
 
 # Footer

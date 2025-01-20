@@ -24,6 +24,7 @@ st.markdown(
         font-family: 'Poppins', sans-serif;
         background-color: #f4f4f9;
         color: #333333;
+        font-size: 18px;
     }
     .main {
         background-color: white;
@@ -40,12 +41,15 @@ st.markdown(
     }
     .stSidebar h2, .stSidebar h3 {
         color: black !important;
+        font-size: 20px;
     }
     .stSidebar .stMarkdown {
         color: black !important;
+        font-size: 18px;
     }
     .stSlider > div {
         color: black !important; /* Better text contrast on sliders */
+        font-size: 16px;
     }
     .stButton>button {
         background-color: #FFA726;
@@ -66,11 +70,11 @@ st.markdown(
     .title {
         font-family: 'Roboto', sans-serif;
         color: #007bff;
-        font-size: 36px;
+        font-size: 38px;
         font-weight: 600;
     }
     .subtitle {
-        font-size: 18px;
+        font-size: 20px;
         color: #333333;
         font-weight: 400;
     }
@@ -214,7 +218,7 @@ plt.gcf().set_dpi(100)  # Ensure consistent resolution
 # Add text for explanation
 plt.text(
     -0.2, 0.95,  # Position: adjust x and y to place it appropriately
-    "Blue bars = Decrease the prediction\nRed bars = Increase the prediction",
+    "Blue bars 🟦 = Decrease the prediction\nRed bars 🟥 = Increase the prediction",
     fontsize=10,
     color='black',
     transform=plt.gcf().transFigure,  # Use axis-relative coordinates
